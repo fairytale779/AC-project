@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function AnimalHeader() {
   return (
-    <header
+    <div
       id={"animallHeader"}
       className="flex w-full justify-between items-center px-1 fixed bg-bg-color color-point-color"
     >
@@ -24,6 +24,6 @@ export default function AnimalHeader() {
           );
         })}
       </nav>
-    </header>
+    </div>
   );
 }
