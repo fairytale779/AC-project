@@ -2,10 +2,18 @@
 import axios from "axios";
 import { Box } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import Villagers from "./components/villagers";
-import AnimalHeader from "./Layout/header";
+import Villagers from "../components/villagers";
+import { useRouter } from "next/navigation";
+import {
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
+import { VillagersColumns } from "@/constants/ColumnList";
+import TanstackTable from "../components/tanstackTable/TanstackTable";
 
 export default function VillagerList() {
+  const router = useRouter();
   const [data, setData] = useState<any[]>([]); // 초기값을 빈 배열로 설정
   const [error, setError] = useState(null);
   const URL = "https://api.nookipedia.com/villagers";
@@ -41,8 +49,8 @@ export default function VillagerList() {
 
   return (
     <>
-      <AnimalHeader />
-      <Box>
+      <TanstackTable data={uniqueData} columns={VillagersColumns} />
+      {/* <Box>
         <div>
           {uniqueData.map((item) => (
             <Villagers
@@ -54,7 +62,7 @@ export default function VillagerList() {
             />
           ))}
         </div>
-      </Box>
+      </Box> */}
     </>
   );
 }
